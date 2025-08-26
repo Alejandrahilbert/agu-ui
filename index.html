@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>AGU Advances — What Causes Lightning?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+  <style>
+    :root{
+      --agu-blue:#003e6b;
+      --agu-teal:#2e8b9d;
+      --bg:#f6f7f8;
+      --card:#ffffff;
+      --text:#101113;
+      --muted:#6b6f76;
+      --border:#e5e7eb;
+      --link:#005ea5;
+      --radius:12px;
+      --content-w:780px;
+    }
+    html,body{margin:0;height:100%;background:var(--bg);color:var(--text);
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+    a{color:var(--link);text-decoration:none;pointer-events:none}
+
+    /* Top header: logo row */
+    .hdr1{
+      background:#fff;border-bottom:1px solid var(--border);
+      display:flex;align-items:center;gap:16px;padding:12px 16px;
+    }
+    .agu-lockup{display:flex;align-items:center;gap:12px}
+    .agu-word{
+      font-weight:900;font-size:28px;letter-spacing:.5px;color:var(--agu-blue);
+    }
+    .agu-sub{
+      color:var(--agu-blue);font-weight:800;font-size:12px;line-height:1.1;
+      letter-spacing:.5px;text-transform:uppercase;
+    }
+    .search{margin-left:auto;background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 14px;min-width:260px;color:#444}
+    .acct{margin-left:12px;color:var(--link);font-weight:600}
+
+    /* Second bar: sections */
+    .hdr2{
+      background:var(--agu-blue);color:#fff;border-bottom:1px solid rgba(0,0,0,.06);
+    }
+    .hdr2-inner{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:22px;font-size:14px;opacity:.95}
+    .hdr2-inner .spacer{flex:1}
+    .chip{background:#0a5d8a;border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:6px 10px;font-size:12px;opacity:.95}
+
+    /* Page layout */
+    .wrap{max-width:1180px;margin:18px auto;display:grid;grid-template-columns:minmax(0,var(--content-w)) 360px;gap:22px;padding:0 16px}
+    @media (max-width:1000px){.wrap{grid-template-columns:1fr}.sidebar{display:none}}
+
+    /* Article header */
+    .journal{color:var(--agu-blue);font-weight:900;font-size:34px;margin:10px 0 8px}
+    .meta-top{display:flex;align-items:center;gap:10px;font-size:13px;color:#6b6f76;margin:6px 0 10px}
+    .pill{background:#eef6ff;color:#0f3f62;border:1px solid #d9e8ff;border-radius:14px;padding:2px 8px;font-weight:700;font-size:12px}
+    .open{background:#ecfdf5;color:#065f46;border-color:#b7f7df}
+    .title{font-weight:900;font-size:28px;margin:8px 0 8px}
+    .authors{font-size:15px;color:#0b3b6f}
+    .publine{font-size:13px;color:#6b6f76;margin-top:6px}
+
+    .bar{display:flex;gap:12px;align-items:center;margin:14px 0 10px}
+    .btn{display:inline-flex;gap:6px;align-items:center;font-size:14px;border:1px solid var(--border);background:#fff;border-radius:999px;padding:8px 12px;color:#333}
+    .btn svg{width:18px;height:18px;stroke:#333;fill:none;stroke-width:2}
+
+    /* Sections */
+    .sections{margin:16px 0;font-size:13px;color:#6b6f76;display:flex;align-items:center;gap:8px}
+    .panel{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin-bottom:16px}
+    .h{font-size:22px;font-weight:900;margin:6px 0 12px}
+    .abs{line-height:1.7;font-size:16px;white-space:pre-wrap}
+
+    /* Sidebar */
+    .issue-card{
+      background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:14px;display:flex;gap:12px;align-items:flex-start;
+      box-shadow:0 1px 0 rgba(0,0,0,.02);
+    }
+    .cover{
+      width:120px;height:90px;border-radius:6px;border:1px solid var(--border);
+      background:linear-gradient(180deg,#dbeafe,#c7d2fe);
+      position:relative;overflow:hidden;flex:0 0 auto;
+    }
+    .cover .badge{
+      position:absolute;top:6px;left:6px;background:#fff;color:#0f3f62;border:1px solid #d9e8ff;border-radius:4px;padding:3px 6px;
+      font-weight:800;font-size:11px;letter-spacing:.1px;
+    }
+    .issue-meta .line1{color:#0f3f62;font-weight:800}
+    .issue-meta .line2{color:#6b6f76;margin-top:2px}
+    .issue-meta .line3{color:#6b6f76;margin-top:4px;font-size:13px}
+
+    /* Non-interactive cursors */
+    .btn,.pill,.authors,.publine,.sections,.chip{cursor:default}
+  </style>
+</head>
+<body>
+  <!-- Top header -->
+  <div class="hdr1">
+    <div class="agu-lockup">
+      <div class="agu-word">AGU</div>
+      <div class="agu-sub">ADVANCING<br/>EARTH AND SPACE SCIENCES</div>
+    </div>
+    <div class="search">Search</div>
+    <div class="acct">Login / Register</div>
+  </div>
+  <div class="hdr2">
+    <div class="hdr2-inner">
+      <div>JOURNALS</div><div>TOPICS</div><div>OTHER PUBLICATIONS</div><div>POLICIES</div>
+      <div class="spacer"></div>
+      <div class="chip">Membership</div>
+      <div class="chip">AGU.org</div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <!-- Article column -->
+    <article>
+      <div class="journal">AGU Advances</div>
+
+      <div class="meta-top">
+        <span class="pill">Research Article</span>
+        <span class="pill open">Open Access</span>
+      </div>
+
+      <h1 class="title">What Causes Lightning?</h1>
+
+      <div class="authors">Dr. Luisa Mora</div>
+      <div class="publine">First published: 25 August 2025  |  https://doi.org/10.1029/2025AV001999</div>
+
+      <div class="bar">
+        <span class="btn" title="PDF">
+          <svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>
+          PDF
+        </span>
+        <span class="btn" title="Tools">
+          <svg viewBox="0 0 24 24"><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          Tools
+        </span>
+        <span class="btn" title="Share">
+          <svg viewBox="0 0 24 24"><path d="M4 12l8-8 8 8"/><path d="M12 4v16"/></svg>
+          Share
+        </span>
+      </div>
+
+      <div class="sections">SECTIONS</div>
+
+      <section class="panel">
+        <div class="h">Abstract</div>
+        <div class="abs">
+Within thunderclouds, turbulence is caused by air updrafts, and tiny ice crystals and water droplets are made to collide. During these collisions, a positive charge is acquired by smaller particles, but larger ones are given a negative charge. In a cloud, smaller particles are lifted, while larger ones are pulled downward. As a result of this, opposite charges are separated, and an enormous electrical potential is created. In a thunderstorm, electricity is discharged between cloud regions, and a similar release is observed between the cloud and Earth’s surface. Among lightning strikes, only a quarter are directed toward the ground, and most are retained within clouds. With the use of satellite detectors, lightning activity was mapped globally, and new insights were gained by researchers. According to satellite data, the most lightning is recorded in Central Africa, because storm formation is enhanced by ocean winds and elevated terrain. In the United States, frequent lightning is reported in Florida, where sea breezes from both coasts are pushed inland and forced to converge. At their collision point, warm air is forced upward, so thunderstorms are triggered and intensified. Across seasons, lightning intensity is observed to vary, and distinctive global patterns are revealed. In North America, wildfires are often ignited by lightning in summer, but in South America, damp conditions prevent such fires from spreading. Over oceanic areas, lightning is rarely observed, because water warms more slowly than land and less convection is generated. On some Pacific islands, lightning is seen so rarely that no local word exists for it, and cultural references to it are absent. Through lightning research, forecasting is improved, and deadly storms can be predicted more effectively in advance.
+        </div>
+      </section>
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="issue-card">
+        <div class="cover">
+          <div class="badge">AGU Advances</div>
+        </div>
+        <div class="issue-meta">
+          <div class="line1">Volume 6, Issue 4</div>
+          <div class="line2">August 2025</div>
+          <div class="line3">e2025AV001999</div>
+        </div>
+      </div>
+    </aside>
+  </main>
+</body>
+</html>
